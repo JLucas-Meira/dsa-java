@@ -13,9 +13,9 @@ import java.util.Set;
 
 public class ElectionService {
 
-    private Set<VoteRecord> validVotes; // Usando Set para garantir que cada voto seja único (não ter duplicatas)
+    private final Set<VoteRecord> validVotes; // Usando Set para garantir que cada voto seja único (não ter duplicatas)
 
-    private Map<Candidate, Integer> scoreBoard; // // Usando Map para relacionar o Candidato com a quantidade de votos dele
+    private final Map<Candidate, Integer> scoreBoard; // Usando Map para relacionar o Candidato com a quantidade de votos dele
 
     public ElectionService() {
         this.validVotes = new HashSet<>();
