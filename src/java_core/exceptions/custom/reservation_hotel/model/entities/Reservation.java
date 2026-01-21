@@ -1,21 +1,21 @@
 package java_core.exceptions.custom.reservation_hotel.model.entities;
 
+import java_core.exceptions.custom.reservation_hotel.model.exceptions.DomainException;
+
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Reservation {
     private int roomNumber;
-    private Date checkin;
-    private Date checkout;
+    private Date checkIn;
+    private Date checkOut;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Reservation(int roomNumber, Date checkin, Date checkout) {
+    public Reservation(int roomNumber, Date checkin, Date checkout) throws DomainException {
         this.roomNumber = roomNumber;
-        this.checkin = checkin;
-        this.checkout = checkout;
+        updateDates(checkin, checkout);
     }
 
     public int getRoomNumber() {
@@ -26,22 +26,40 @@ public class Reservation {
         this.roomNumber = roomNumber;
     }
 
-    public Date getCheckin() {
-        return checkin;
+    public Date getCheckIn() {
+        return checkIn;
     }
 
-    public Date getCheckout() {
-        return checkout;
+    public Date getCheckOut() {
+        return checkOut;
     }
 
     public long duration(){
-        long diff = getCheckout().getTime() - getCheckin().getTime();
+        long diff = getCheckOut().getTime() - getCheckIn().getTime();
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
-    public void updateDates (Date checkin, Date checkout){
-        this.checkin = checkin ;
-        this.checkout = checkout;
+    public void updateDates (Date checkIn, Date checkOut) throws DomainException{
+        Date now = new Date();
+        if (checkIn.before(now) || checkOut.before(now)){
+            throw new DomainException("As datas de check-in ou check-out não podem ser anteriores a data atual!");
+        }
+        if (!checkOut.after(checkIn)) {
+            throw new DomainException("A data de check-out não pode ser anterior a data de check-in");
+        }
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation: Room " +
+                roomNumber +
+                ", Check-in: " +
+                sdf.format(checkIn) +
+                ", check-out: " +
+                sdf.format(checkOut) + ", " +
+                duration() +
+                " nights";
+    }
 }
