@@ -14,13 +14,14 @@ public class Main {
             n.logRegister();
             n.send();
 
-            //Verifica o tipo específico de notificação (Recurso do Java 21)
-            switch (n) {
-                case Email e -> System.out.println("LOG: Email has subject " + e.getSubject());
-                case SMS s -> System.out.println("LOG: SMS has subject " + s.getSubject());
-                default -> System.out.println("Unknown type");
-            }
-            System.out.println("-------------------------------------------------");
+             // Verifica o tipo específico de notificação (Padrão Java 17)
+             if (n instanceof Email e) {
+                 System.out.println("LOG: Email has subject " + e.getSubject());
+             } else if (n instanceof SMS s) {
+                 System.out.println("LOG: SMS has subject " + s.getSubject());
+             } else {
+                 System.out.println("Unknown type");
+             }
         }
 
         System.out.println("--- STREAM API ---");
