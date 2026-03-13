@@ -17,9 +17,11 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
-        //Expressão lambda declarada:
-        Predicate<Product> pred = p -> p.getPrice() > 100;
-        list.removeIf(pred);
+        list.removeIf(p -> p.getPrice() > 100);
+
+        //Expressão lambda declarada, bom para reuso.
+        //Predicate<Product> pred = p -> p.getPrice() > 100;
+        //list.removeIf(pred);
 
         //Reference method com metodo NÃO estatico.
         //list.removeIf(Product::nonStaticProductPredicate);
