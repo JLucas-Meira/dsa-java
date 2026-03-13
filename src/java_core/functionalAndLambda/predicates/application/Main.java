@@ -5,6 +5,7 @@ import java_core.functionalAndLambda.predicates.util.ProductPredicate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,8 +17,12 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
+        //Expressão lambda declarada:
+        Predicate<Product> pred = p -> p.getPrice() > 100;
+        list.removeIf(pred);
+
         //Reference method com metodo NÃO estatico.
-        list.removeIf(Product::nonStaticProductPredicate);
+        //list.removeIf(Product::nonStaticProductPredicate);
 
         //Reference method com metodo estatico.
         //list.removeIf(Product::staticProductPredicate);
