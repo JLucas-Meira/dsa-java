@@ -26,8 +26,14 @@ public class Product {
         this.price = price;
     }
 
+    //O metodo é da classe. Ele recebe um produto e o avalia de fora.
     public static boolean staticProductPredicate(Product p){
         return p.getPrice() > 100;
+    }
+
+    //O metodo é da instância. O próprio objeto se avalia (this).
+    public boolean nonStaticProductPredicate(){
+        return price > 100;
     }
 
     @Override
