@@ -16,8 +16,11 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
+        //Reference method com metodo estatico.
+        list.removeIf(Product::staticProductPredicate);
+
         //Versão usando implementação da interface.
-        list.removeIf(new ProductPredicate());
+        //list.removeIf(new ProductPredicate());
 
         for (Product p : list){
             System.out.println(p);
