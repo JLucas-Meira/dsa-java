@@ -15,8 +15,10 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
+        list.forEach(Product::nonStaticPriceUpdate);
+
         //Uso de metodo estatico
-        list.forEach(Product::staticPriceUpdate);
+        //list.forEach(Product::staticPriceUpdate);
 
         //Uso do consumer com interface
         //list.forEach(new PriceUpdate());

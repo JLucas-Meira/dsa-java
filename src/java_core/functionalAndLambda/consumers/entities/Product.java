@@ -33,6 +33,11 @@ public class Product {
         p.setPrice(p.getPrice() * 1.1);
     }
 
+    //O metodo é da instância. O próprio objeto se avalia (this).
+    public void nonStaticPriceUpdate(){
+        price = price * 1.1;
+    }
+
     @Override
     public String toString() {
         return name + ", " + String.format("%.2f", price);
