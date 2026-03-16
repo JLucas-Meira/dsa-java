@@ -1,7 +1,7 @@
 package java_core.functionalAndLambda.consumers.application;
 
 import java_core.functionalAndLambda.consumers.util.PriceUpdate;
-import java_core.functionalAndLambda.predicates.entities.Product;
+import java_core.functionalAndLambda.consumers.entities.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,11 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
-        list.forEach(new PriceUpdate());
+        //Uso de metodo estatico
+        list.forEach(Product::staticPriceUpdate);
+
+        //Uso do consumer com interface
+        //list.forEach(new PriceUpdate());
 
         list.forEach(System.out::println);
     }
