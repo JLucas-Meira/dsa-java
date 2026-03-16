@@ -16,8 +16,12 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
-        Consumer<Product> cons = p -> p.setPrice(p.getPrice() * 1.1);
-        list.forEach(cons);
+        //Expressão lambda inline
+        list.forEach(p -> p.setPrice(p.getPrice() * 1.1));
+
+        //Expressão lambda declarada
+        //Consumer<Product> cons = p -> p.setPrice(p.getPrice() * 1.1);
+        //list.forEach(cons);
 
         //Uso de metodo NÃO estatico
         //list.forEach(Product::nonStaticPriceUpdate);
