@@ -5,6 +5,7 @@ import java_core.functionalAndLambda.consumers.entities.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +16,11 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
-        list.forEach(Product::nonStaticPriceUpdate);
+        Consumer<Product> cons = p -> p.setPrice(p.getPrice() * 1.1);
+        list.forEach(cons);
+
+        //Uso de metodo NÃO estatico
+        //list.forEach(Product::nonStaticPriceUpdate);
 
         //Uso de metodo estatico
         //list.forEach(Product::staticPriceUpdate);
