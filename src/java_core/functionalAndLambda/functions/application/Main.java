@@ -18,9 +18,12 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
+        //Função lambda inline
+        List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
+
         //Função lambda declarada
-        Function<Product, String> func = p -> p.getName().toUpperCase();
-        List<String> names = list.stream().map(func).collect(Collectors.toList());
+        //Function<Product, String> func = p -> p.getName().toUpperCase();
+        //List<String> names = list.stream().map(func).collect(Collectors.toList());
 
         //Uso de metodo NÃO estatico
         //List<String> names = list.stream().map(Product::nonStaticUpperCaseName).collect(Collectors.toList());
