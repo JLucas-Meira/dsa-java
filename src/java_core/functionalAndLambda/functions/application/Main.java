@@ -17,8 +17,11 @@ public class Main {
         list.add(new Product("HD Case", 85.00));
         list.add(new Product("Mouse", 59.90));
 
+        //Uso de metodo NÃO estatico
+        //List<String> names = list.stream().map(Product::nonStaticUpperCaseName).collect(Collectors.toList());
+
         //Uso de metodo estatico
-        List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
+        //List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
 
         //Uso do function com interface
         //List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList());

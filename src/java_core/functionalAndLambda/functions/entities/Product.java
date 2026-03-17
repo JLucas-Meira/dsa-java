@@ -28,6 +28,12 @@ public class Product {
         this.price = price;
     }
 
+    //O metodo é da instância. O próprio objeto se avalia (this).
+    public String nonStaticUpperCaseName(){
+        return name.toUpperCase();
+    }
+
+    //O metodo é da classe. Ele recebe um produto e o avalia de fora.
     public static String staticUpperCaseName(Product product){
         return product.getName().toUpperCase();
     }
